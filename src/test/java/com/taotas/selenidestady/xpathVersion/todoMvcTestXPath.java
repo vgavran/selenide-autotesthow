@@ -18,12 +18,13 @@ public class todoMvcTestXPath {
         $$(By.xpath("//*[@id='todo-list']/li")).shouldHave(exactTexts("a", "b", "c"));
 
         $(By.xpath("//*[@id='todo-list']/li[.//text()='b']" +
-                "//*[contains(concat(' ', normalize-space(@class), ' '), ' toggle ')]")).click();
-        $$(By.xpath("//*[@id='todo-list']/li" +
-                "[contains(concat(' ', normalize-space(@class), ' '), ' completed ')]"))
+                "//*[contains(concat(' ', normalize-space(@class), ' '), ' toggle ')]"))
+                .click();
+        $$(By.xpath("//*[@id='todo-list']" +
+                "/li[contains(concat(' ', normalize-space(@class), ' '), ' completed ')]"))
                 .shouldHave(exactTexts("b"));
-        $$(By.xpath("//*[@id='todo-list']/li" +
-                "[not(contains(concat(' ', normalize-space(@class), ' '), ' completed '))]"))
+        $$(By.xpath("//*[@id='todo-list']" +
+                "/li[not(contains(concat(' ', normalize-space(@class), ' '), ' completed '))]"))
                 .shouldHave(exactTexts("a", "c"));
     }
 }
