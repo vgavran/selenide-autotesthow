@@ -15,11 +15,15 @@ public class todoMvcTestXPath {
         $(By.xpath("//*[@id='new-todo']")).setValue("a").pressEnter();
         $(By.xpath("//*[@id='new-todo']")).setValue("b").pressEnter();
         $(By.xpath("//*[@id='new-todo']")).setValue("c").pressEnter();
-        $$(By.xpath("//*[@id='todo-list']/li/div/label")).shouldHave(exactTexts("a", "b", "c"));
+        $$(By.xpath("//*[@id='todo-list']/li")).shouldHave(exactTexts("a", "b", "c"));
 
-        $(By.xpath("//*[@id='todo-list']/li[.//text()='b']//*[contains(concat(' ', normalize-space(@class), ' '), ' toggle ')]")).click();
-
-        $$(By.xpath("//*[@id='todo-list']/li[contains(concat(' ', normalize-space(@class), ' '), ' completed ')]")).shouldHave(exactTexts("b"));
-        $$(By.xpath("//*[@id='todo-list']/li[not(contains(concat(' ', normalize-space(@class), ' '), ' completed '))]")).shouldHave(exactTexts("a", "c"));
+        $(By.xpath("//*[@id='todo-list']/li[.//text()='b']" +
+                "//*[contains(concat(' ', normalize-space(@class), ' '), ' toggle ')]")).click();
+        $$(By.xpath("//*[@id='todo-list']/li" +
+                "[contains(concat(' ', normalize-space(@class), ' '), ' completed ')]"))
+                .shouldHave(exactTexts("b"));
+        $$(By.xpath("//*[@id='todo-list']/li" +
+                "[not(contains(concat(' ', normalize-space(@class), ' '), ' completed '))]"))
+                .shouldHave(exactTexts("a", "c"));
     }
 }
