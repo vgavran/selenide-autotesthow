@@ -18,13 +18,13 @@ public class todoMvcTestXPathRefactoring {
         $$(By.xpath("//*[@id='todo-list']/li")).shouldHave(exactTexts("a", "b", "c"));
 
         $(By.xpath("//*[@id='todo-list']/li[.//text()='b']//*["
-                + XPath.findByClass("toggle") + "]"))
+                + XPath.findByCssClass("toggle") + "]"))
                 .click();
         $$(By.xpath("//*[@id='todo-list']/li["
-                + XPath.findByClass("completed") + "]"))
+                + XPath.findByCssClass("completed") + "]"))
                 .shouldHave(exactTexts("b"));
         $$(By.xpath("//*[@id='todo-list']/li[not("
-                + XPath.findByClass("completed") + ")]"))
+                + XPath.findByCssClass("completed") + ")]"))
                 .shouldHave(exactTexts("a", "c"));
     }
 }

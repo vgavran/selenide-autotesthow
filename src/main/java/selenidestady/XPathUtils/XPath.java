@@ -2,9 +2,9 @@ package selenidestady.XPathUtils;
 
 public class XPath {
 
-    public static String findByClass (String className)
+    public static String findByCssClass (String value)
     {
-        String xp = "contains(concat(' ', normalize-space(@class), ' '), ' " + className +" ')";
-        return xp;
+        return "contains(concat(' ', normalize-space(@class), ' '), ' " + value +" ')";
+
     }
 }
