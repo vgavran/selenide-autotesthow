@@ -1,7 +1,7 @@
-package com.taotas.selenidestady.refactoring;
+package com.taotas.selenidestady.xpathrefactoring;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import selenidestady.xpathutils.XPath;
+import selenidestady.utils.XPath;
 
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -15,7 +15,8 @@ public class TodoMvcTest {
         $(By.xpath("//*[@id='new-todo']")).setValue("a").pressEnter();
         $(By.xpath("//*[@id='new-todo']")).setValue("b").pressEnter();
         $(By.xpath("//*[@id='new-todo']")).setValue("c").pressEnter();
-        $$(By.xpath("//*[@id='todo-list']/li")).shouldHave(exactTexts("a", "b", "c"));
+        $$(By.xpath("//*[@id='todo-list']/li"))
+                .shouldHave(exactTexts("a", "b", "c"));
 
         $(By.xpath("//*[@id='todo-list']/li[.//text()='b']//*["
                 + XPath.hasCssClass("toggle") + "]"))
